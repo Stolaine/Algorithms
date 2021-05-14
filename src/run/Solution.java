@@ -22,5 +22,12 @@ public class Solution {
         LongestIncreasingSubsequence lis = new LongestIncreasingSubsequence();
         int length = lis.getLIS(arr);
         System.out.println(length);
+
+        ArrayList<Integer> elements = lis.getLisList(arr);
+        System.out.println(elements.size());
+        for (int element : elements) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
     }
 }
