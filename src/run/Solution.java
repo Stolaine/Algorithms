@@ -20,14 +20,17 @@ public class Solution {
             arr[i] = sc.nextInt();
         }
         LongestIncreasingSubsequence lis = new LongestIncreasingSubsequence();
-        int length = lis.getLIS(arr);
-        System.out.println(length);
+//        int length = lis.getLIS(arr);
+//        System.out.println(length);
 
-        ArrayList<Integer> elements = lis.getLisList(arr);
+//        ArrayList<Integer> elements = lis.getLisList(arr);
+        ArrayList<Integer> elements = lis.getLisListApproachTwo(arr);
         System.out.println(elements.size());
         for (int element : elements) {
             System.out.print(element + " ");
         }
         System.out.println();
+
+
     }
 }

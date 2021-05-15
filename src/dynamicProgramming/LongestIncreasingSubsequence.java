@@ -72,6 +72,35 @@ public class LongestIncreasingSubsequence {
         }
         return sortedLists.get(sortedLists.size()-1).elements;
     }
+
+    public ArrayList<Integer> getLisListApproachTwo(int[] arr) {
+        int size = arr.length;
+        ArrayList<Integer> elements = new ArrayList<>();
+        for (int i=0; i<size; i++) { // n
+            int curr = arr[i];
+            boolean added = false;
+            for (int j=elements.size()-1; j>=0; j--) { // n
+                if (elements.get(j)<curr) {
+                    added = true;
+                    if (j == elements.size()-1) {
+                        elements.add(curr);
+                    } else {
+                        elements.remove(j+1);
+                        elements.add(j+1, curr);
+                    }
+                    break;
+                }
+            }
+            if (elements.size() == 0) {
+                elements.add(curr);
+            } else if (!added) {
+                elements.remove(0);
+                elements.add(0, curr);
+            }
+        }
+        return elements;
+    }
+
 }
 
 class SortedList implements Comparable<SortedList>{
