@@ -78,24 +78,13 @@ public class LongestIncreasingSubsequence {
         ArrayList<Integer> elements = new ArrayList<>();
         for (int i=0; i<size; i++) { // n
             int curr = arr[i];
-            boolean added = false;
-            for (int j=elements.size()-1; j>=0; j--) { // n
-                if (elements.get(j)<curr) {
-                    added = true;
-                    if (j == elements.size()-1) {
-                        elements.add(curr);
-                    } else {
-                        elements.remove(j+1);
-                        elements.add(j+1, curr);
-                    }
-                    break;
+            int index = Collections.binarySearch(elements, curr); // log n
+            if (index<0) {
+                index = -(index+1);
+                if (index<elements.size()) {
+                    elements.remove(index);
                 }
-            }
-            if (elements.size() == 0) {
-                elements.add(curr);
-            } else if (!added) {
-                elements.remove(0);
-                elements.add(0, curr);
+                elements.add(index, curr);
             }
         }
         return elements;
